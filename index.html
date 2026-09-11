@@ -1,0 +1,551 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Sineus Tour · Descubrí Mendoza de una forma diferente</title>
+<meta name="description" content="Sineus Tour — agencia de turismo en Mendoza. Experiencias personalizadas, bodegas, alta montaña, itinerarios a medida y tienda de productos mendocinos.">
+
+<link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+<!-- ===== NAV ===== -->
+<header class="nav">
+  <div class="wrap nav-in">
+    <a href="#inicio" class="brand"><img src="assets/logo.png" alt="Sineus Tours"></a>
+    <nav class="nav-links">
+      <a href="#inicio" onclick="showView('home');return false;" data-i18n="nav_inicio">Inicio</a>
+      <a href="#experiencias" onclick="showView('experiencias');return false;" data-i18n="nav_exp">Experiencias</a>
+      <a href="#novedades" onclick="showView('novedades');return false;" data-i18n="nav_nov">Novedades</a>
+      <a href="#itinerario" onclick="showView('itinerario');return false;" data-i18n="nav_itin">Armá tu viaje</a>
+      <a href="#tienda" onclick="showView('tienda');return false;" data-i18n="nav_shop">Tienda</a>
+      <a href="#contacto" onclick="showView('contacto');return false;" data-i18n="nav_contacto">Contacto</a>
+    </nav>
+    <div class="nav-actions">
+      <div class="lang-flags" role="group" aria-label="Idioma">
+        <button class="lang-flag on" data-l="es" onclick="setLang('es')" title="Español">🇦🇷</button>
+        <button class="lang-flag" data-l="pt" onclick="setLang('pt')" title="Português">🇧🇷</button>
+        <button class="lang-flag" data-l="en" onclick="setLang('en')" title="English">🇺🇸</button>
+      </div>
+      <div class="langs" role="group" aria-label="Idioma">
+        <button class="langbtn on" data-l="es" onclick="applyLang('es')" title="Español" aria-label="Español"><svg viewBox="0 0 30 22"><rect width="30" height="22" fill="#74acdf"/><rect y="7.33" width="30" height="7.33" fill="#fff"/><circle cx="15" cy="11" r="2.6" fill="#f6b40e"/></svg></button>
+        <button class="langbtn" data-l="pt" onclick="applyLang('pt')" title="Português" aria-label="Português"><svg viewBox="0 0 30 22"><rect width="30" height="22" fill="#089b3a"/><path d="M15 2.5 27 11 15 19.5 3 11z" fill="#fedf00"/><circle cx="15" cy="11" r="3.4" fill="#002776"/></svg></button>
+        <button class="langbtn" data-l="en" onclick="applyLang('en')" title="English" aria-label="English"><svg viewBox="0 0 30 22"><rect width="30" height="22" fill="#fff"/><g fill="#b22234"><rect width="30" height="1.7"/><rect y="3.4" width="30" height="1.7"/><rect y="6.8" width="30" height="1.7"/><rect y="10.2" width="30" height="1.7"/><rect y="13.6" width="30" height="1.7"/><rect y="17" width="30" height="1.7"/><rect y="20.4" width="30" height="1.6"/></g><rect width="13" height="11.9" fill="#3c3b6e"/></svg></button>
+      </div>
+      <button class="icon-btn" onclick="toggleDark()" aria-label="Modo oscuro" title="Modo oscuro">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 12.8A9 9 0 1 1 11.2 3 7 7 0 0 0 21 12.8z"/></svg>
+      </button>
+      <button class="icon-btn" onclick="openWish()" aria-label="Favoritos" title="Favoritos">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20.8 4.6a5.5 5.5 0 0 0-7.8 0L12 5.7l-1-1.1a5.5 5.5 0 1 0-7.8 7.8L12 21l8.8-8.6a5.5 5.5 0 0 0 0-7.8z"/></svg>
+        <span class="cart-count" id="wishCount" style="display:none">0</span>
+      </button>
+      <button class="icon-btn" onclick="openCart()" aria-label="Carrito" title="Carrito">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="9" cy="21" r="1"/><circle cx="20" cy="21" r="1"/><path d="M1 1h4l2.7 13.4a2 2 0 0 0 2 1.6h9.7a2 2 0 0 0 2-1.6L23 6H6"/></svg>
+        <span class="cart-count" id="cartCount" style="display:none">0</span>
+      </button>
+      <button class="icon-btn menu-toggle" onclick="document.querySelector('.nav-links').style.display = (getComputedStyle(document.querySelector('.nav-links')).display==='none'?'flex':'none')" aria-label="Menú">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 6h18M3 12h18M3 18h18"/></svg>
+      </button>
+    </div>
+  </div>
+</header>
+
+<!-- ===== HERO ===== -->
+<div id="subbar"><div class="wrap"><button class="exp-back" onclick="showView('experiencias')">← Volver a experiencias</button></div></div>
+
+<section class="hero" id="inicio">
+  <div class="wrap hero-grid">
+    <div class="hero-copy">
+      <span class="eyebrow" data-i18n="hero_eyebrow">Agencia de Turismo • Mendoza • E.V.T. Leg. 17079</span>
+      <h1>Sineus Tour<span class="sub" data-i18n="hero_sub">Sumate a nuestra comunidad y descubrí Mendoza de una forma diferente.</span></h1>
+      <p class="lede" data-i18n="hero_lede">Te acompañamos en cada paso de tu viaje. Diseñamos experiencias personalizadas según tus gustos, seleccionamos las mejores bodegas, excursiones y servicios, e incorporamos productos exclusivos para que disfrutes Mendoza incluso después de regresar a casa.</p>
+      <p class="hero-tag" data-i18n="hero_tag">Más que una agencia, somos tu compañero de viaje.</p>
+      <div class="hero-cta">
+        <a href="#itinerario" onclick="showView('itinerario');return false;" class="btn btn-primary btn-hero-main" data-i18n="hero_btn2">Armá tu itinerario</a>
+        <div class="hero-cta-row">
+          <a href="#servicios" onclick="showView('home','servicios');return false;" class="btn btn-ghost btn-hero-sm" data-i18n="hero_btn_serv">Nuestros servicios</a>
+          <a href="#experiencias" onclick="showView('experiencias');return false;" class="btn btn-ghost btn-hero-sm" data-i18n="hero_btn1">Experiencias</a>
+        </div>
+      </div>
+    </div>
+    <div class="hero-media">
+      <div class="hero-bg" id="heroBg">
+        <div class="hero-slide active" style="background-image:var(--img1)"></div>
+        <div class="hero-slide" style="background-image:var(--img2)"></div>
+        <div class="hero-slide" style="background-image:var(--img3)"></div>
+        <div class="hero-slide" style="background-image:var(--img4)"></div>
+        <div class="hero-slide" style="background-image:var(--img5)"></div>
+      </div>
+      <div class="hero-dots" id="heroDots"></div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== TRUST / COUNTERS ===== -->
+<section class="sec trust" id="trust">
+  <div class="wrap">
+    <div class="sec-head center reveal">
+      <span class="eyebrow" style="color:var(--gold)" data-i18n="t_eyebrow">Confianza</span>
+      <h2 data-i18n="t_h2">Miles de viajeros ya eligieron vivir Mendoza con nosotros</h2>
+    </div>
+    <div class="counters reveal">
+      <div class="counter"><b data-count="10498" data-prefix="+">+0</b><span data-i18n="c_clientes">Clientes</span></div>
+      <div class="counter"><b data-count="60" data-prefix="+">+0</b><span data-i18n="c_tours">Tours diarios</span></div>
+      <div class="counter"><b data-count="250" data-prefix="+">+0</b><span data-i18n="c_agencias">Agencias que confiaron</span></div>
+      <div class="counter"><b data-count="10" data-prefix="+">+0</b><span data-i18n="c_anos">Años creando experiencias</span></div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== TESTIMONIALS ===== -->
+<section class="sec testi" id="testi">
+  <div class="wrap">
+    <div class="sec-head center reveal">
+      <span class="eyebrow" data-i18n="te_eyebrow">Opiniones reales</span>
+      <h2 data-i18n="te_h2">Lo que dicen nuestros viajeros</h2>
+    </div>
+    <div class="testi-track reveal" id="testiTrack"></div>
+    <div class="testi-dots" id="testiDots"></div>
+  </div>
+</section>
+
+<!-- ===== EXPERIENCES ===== -->
+<!-- ===== SERVICIOS ===== -->
+<section class="sec" id="servicios">
+  <div class="wrap">
+    <div class="sec-head reveal">
+      <span class="eyebrow" data-i18n="sv_eyebrow">Servicios</span>
+      <h2 data-i18n="sv_h2">Todo lo que hacemos por tu viaje</h2>
+      <p data-i18n="sv_p">De la llegada a la despedida, nos ocupamos de cada detalle.</p>
+    </div>
+    <div class="sv-marquee reveal"><div class="sv-track"><div class="sv-item"><span class="sv-ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M2 13l1.4-5.2A2 2 0 0 1 5.3 6.3H15l4.5 5.2H22v3.5h-2"/><path d="M2 15v-2h13.5"/><circle cx="7" cy="16" r="1.7"/><circle cx="17.5" cy="16" r="1.7"/></svg></span><span class="sv-name" data-i18n="sv1">Traslados</span></div><div class="sv-item"><span class="sv-ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M3 19l6-10 4.5 7"/><path d="M12 19l4-6 5 6z"/></svg></span><span class="sv-name" data-i18n="sv2">Paseos y excursiones</span></div><div class="sv-item"><span class="sv-ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round"><path d="M4 7h9M17 7h3M4 12h3M11 12h9M4 17h11M19 17h1"/><circle cx="15" cy="7" r="2"/><circle cx="9" cy="12" r="2"/><circle cx="17" cy="17" r="2"/></svg></span><span class="sv-name" data-i18n="sv3">Organización a medida</span></div><div class="sv-item"><span class="sv-ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M3 18V8M3 14h18v4M21 18v-3a3 3 0 0 0-3-3h-7v3"/><circle cx="7" cy="11" r="1.6"/></svg></span><span class="sv-name" data-i18n="sv4">Hotelería</span></div><div class="sv-item"><span class="sv-ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="8" width="18" height="12" rx="2"/><path d="M8 8V6a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2M3 13h18"/></svg></span><span class="sv-name" data-i18n="sv5">Viajes corporativos</span></div><div class="sv-item"><span class="sv-ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><circle cx="12" cy="12" r="2.4"/><path d="M12 3.2v6.4M4.5 8.5l5.3 3.1M19.5 8.5l-5.3 3.1"/></svg></span><span class="sv-name" data-i18n="sv6">Paseos privados</span></div><div class="sv-item"><span class="sv-ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M2 13l1.4-5.2A2 2 0 0 1 5.3 6.3H15l4.5 5.2H22v3.5h-2"/><path d="M2 15v-2h13.5"/><circle cx="7" cy="16" r="1.7"/><circle cx="17.5" cy="16" r="1.7"/></svg></span><span class="sv-name" data-i18n="sv1">Traslados</span></div><div class="sv-item"><span class="sv-ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M3 19l6-10 4.5 7"/><path d="M12 19l4-6 5 6z"/></svg></span><span class="sv-name" data-i18n="sv2">Paseos y excursiones</span></div><div class="sv-item"><span class="sv-ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round"><path d="M4 7h9M17 7h3M4 12h3M11 12h9M4 17h11M19 17h1"/><circle cx="15" cy="7" r="2"/><circle cx="9" cy="12" r="2"/><circle cx="17" cy="17" r="2"/></svg></span><span class="sv-name" data-i18n="sv3">Organización a medida</span></div><div class="sv-item"><span class="sv-ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M3 18V8M3 14h18v4M21 18v-3a3 3 0 0 0-3-3h-7v3"/><circle cx="7" cy="11" r="1.6"/></svg></span><span class="sv-name" data-i18n="sv4">Hotelería</span></div><div class="sv-item"><span class="sv-ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="8" width="18" height="12" rx="2"/><path d="M8 8V6a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2M3 13h18"/></svg></span><span class="sv-name" data-i18n="sv5">Viajes corporativos</span></div><div class="sv-item"><span class="sv-ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><circle cx="12" cy="12" r="2.4"/><path d="M12 3.2v6.4M4.5 8.5l5.3 3.1M19.5 8.5l-5.3 3.1"/></svg></span><span class="sv-name" data-i18n="sv6">Paseos privados</span></div></div></div>
+    <div class="hero-cta" style="margin-top:30px;max-width:420px">
+      <a class="btn btn-primary btn-hero-main" href="#contacto" onclick="showView('contacto');return false;" data-i18n="sv_cta">Pedí tu cotización</a>
+    </div>
+  </div>
+</section>
+
+<!-- ===== BIENVENIDA (VIDEO) ===== -->
+<section class="sec welcome" id="bienvenida">
+  <div class="wrap">
+    <div class="sec-head reveal">
+      <span class="eyebrow" data-i18n="w_eyebrow">Bienvenida</span>
+      <h2 data-i18n="w_h2">Te damos la bienvenida a Sineus</h2>
+    </div>
+    <div class="welcome-frame" id="bemFrame">
+      <button class="welcome-play" id="bemPlay" onclick="playBem()" aria-label="Reproducir video"><svg width="34" height="34" viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7z"/></svg></button>
+    </div>
+  </div>
+</section>
+
+<section class="sec" id="experiencias">
+  <div class="wrap">
+    <div class="sec-head reveal">
+      <span class="eyebrow" data-i18n="e_eyebrow">Experiencias</span>
+      <h2 data-i18n="e_h2">Elegí cómo querés vivir Mendoza</h2>
+      <p data-i18n="e_p">Cada experiencia es una puerta de entrada distinta a la provincia. Tocá una tarjeta para conocer más.</p>
+    </div>
+    <div class="exp-grid reveal" id="expGrid"></div>
+  </div>
+</section>
+
+<!-- ===== WINE MAP ===== -->
+<section class="sec map-block" id="vinicolas">
+  <div class="wrap">
+    <div class="sec-head reveal">
+      <span class="eyebrow" data-i18n="m_eyebrow">Experiencias vinícolas</span>
+      <h2 data-i18n="m_h2">Las zonas del vino de Mendoza</h2>
+      <p data-i18n="m_p">Trabajamos Luján de Cuyo, Maipú y Valle de Uco. Tocá una zona para ver sus bodegas, filtrá por tipo de experiencia, o cambiá al circuito de alta montaña.</p>
+    </div>
+    <div class="reveal">
+      <div class="filters" id="filters">
+        <button class="active" data-f="todas" data-i18n="f_todas">Todas</button>
+        <button data-f="Degustación" data-i18n="f_deg">Visita y degustación</button>
+        <button data-f="Almuerzo" data-i18n="f_alm">Almuerzo</button>
+        <button data-f="Cena" data-i18n="f_cena">Cena</button>
+      </div>
+      <p class="map-note" data-i18n="map_note">La información de bodegas y experiencias puede variar según la temporada y debe confirmarse al momento de reservar.</p>
+      <div class="map-layout">
+        <div class="map-stage">
+          <svg id="map" viewBox="0 0 428 672" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Mapa real de Mendoza con las zonas del vino">
+  <defs><linearGradient id="mzafill" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#f6f9f6"/><stop offset="1" stop-color="#e7ece7"/></linearGradient></defs>
+  <path d="M39.1,487.6 L43.1,477.7 L45.1,471.7 L46.1,460.9 L37.0,455.9 L55.1,447.0 L46.1,442.0 L41.1,435.1 L44.1,423.2 L39.1,415.2 L40.1,403.2 L39.1,396.3 L32.0,393.3 L28.0,386.3 L26.0,379.3 L38.0,379.3 L47.1,371.3 L46.1,363.3 L47.1,349.3 L59.1,337.2 L53.1,333.2 L55.1,324.2 L59.1,311.1 L64.2,306.1 L70.2,301.0 L76.2,296.0 L77.2,283.9 L74.2,274.8 L85.2,277.8 L89.3,276.8 L97.3,269.7 L96.3,263.7 L95.3,255.6 L95.3,247.4 L94.3,239.3 L87.2,241.4 L92.3,233.2 L88.2,227.2 L92.3,212.9 L88.2,203.8 L88.2,193.6 L93.3,185.4 L99.3,177.3 L99.3,169.1 L93.3,160.9 L88.2,158.9 L83.2,161.9 L81.2,168.1 L73.2,166.0 L73.2,160.9 L73.2,154.8 L73.2,148.6 L73.2,140.4 L78.2,136.3 L83.2,130.2 L81.2,125.0 L75.2,117.9 L70.2,111.7 L66.2,104.5 L63.1,97.3 L64.2,90.1 L72.2,93.2 L75.2,84.9 L80.2,79.8 L86.2,87.0 L92.3,86.0 L99.3,80.8 L107.3,76.7 L102.3,66.4 L105.3,60.2 L112.3,52.9 L116.4,45.7 L119.4,38.4 L126.4,31.2 L134.4,31.2 L140.5,38.4 L144.5,30.1 L155.5,26.0 L164.6,31.2 L167.6,35.3 L177.6,36.4 L177.6,59.1 L194.7,61.2 L218.8,49.8 L220.8,40.5 L236.8,36.4 L242.9,40.5 L252.9,34.3 L259.9,32.2 L261.9,39.5 L270.0,44.6 L279.0,48.8 L284.0,47.7 L291.1,50.9 L300.1,49.8 L306.1,49.8 L306.1,55.0 L309.1,61.2 L315.2,61.2 L322.2,60.2 L322.7,67.9 L327.2,79.3 L325.7,82.3 L329.2,85.4 L326.7,90.1 L332.7,91.6 L329.2,98.3 L338.8,104.5 L336.2,117.3 L330.2,122.5 L337.7,151.7 L336.7,159.9 L338.2,181.3 L343.8,194.6 L348.8,203.8 L353.3,207.8 L356.3,213.4 L361.3,220.6 L364.9,225.6 L364.4,230.2 L370.9,230.7 L373.4,234.3 L377.9,237.8 L381.9,240.9 L383.4,243.9 L379.9,246.9 L377.9,255.6 L376.9,262.6 L375.9,270.7 L372.4,272.8 L371.9,277.8 L372.9,282.4 L369.4,285.4 L370.4,289.4 L374.4,292.4 L376.4,299.0 L375.4,304.5 L378.4,313.6 L382.9,320.1 L385.4,326.7 L386.9,330.2 L382.4,331.2 L391.5,335.7 L397.5,352.3 L395.0,356.8 L397.0,363.8 L398.0,367.8 L400.0,374.3 L400.0,381.3 L402.0,386.3 L397.5,390.3 L401.5,393.8 L397.0,397.3 L395.5,402.7 L395.5,407.7 L398.5,413.2 L398.0,417.2 L396.0,423.2 L394.0,425.1 L393.5,428.6 L393.0,433.6 L391.5,443.0 L389.5,451.4 L387.9,460.4 L386.4,467.8 L234.8,465.8 L235.8,499.4 L238.9,645.0 L228.8,646.0 L217.8,641.2 L208.7,633.4 L203.7,629.5 L193.7,622.7 L185.6,622.7 L179.6,624.7 L169.6,626.6 L170.6,614.9 L165.6,605.2 L151.5,597.4 L138.4,599.4 L125.4,607.2 L119.4,606.2 L116.4,599.4 L104.3,590.6 L101.3,583.8 L101.3,572.0 L80.2,551.5 L65.2,535.8 L63.1,526.0 L57.1,510.2 L51.1,512.2 L44.1,514.2 L43.1,489.5 L39.1,487.6 Z" fill="url(#mzafill)" stroke="#8a9686" stroke-width="1.6" stroke-linejoin="round"/>
+  <text x="32" y="336" fill="#9aa294" font-family="Outfit" font-size="12" transform="rotate(-90 32 336)" letter-spacing="3">CORDILLERA DE LOS ANDES</text>
+  <g class="region" data-region="lujan" tabindex="0" role="button" aria-label="Luján de Cuyo"><circle cx="174.6" cy="141.9" r="14" fill="#4e9c2e"/><circle cx="174.6" cy="141.9" r="14" fill="none" stroke="#fff" stroke-width="2.5"/><text class="reg-label" x="174.6" y="121.9" text-anchor="middle">Luján de Cuyo</text></g><g class="region" data-region="maipu" tabindex="0" role="button" aria-label="Maipú"><circle cx="189.6" cy="134.5" r="14" fill="#e0a31f"/><circle cx="189.6" cy="134.5" r="14" fill="none" stroke="#fff" stroke-width="2.5"/><text class="reg-label" x="189.6" y="114.5" text-anchor="middle">Maipú</text></g><g class="region" data-region="uco" tabindex="0" role="button" aria-label="Valle de Uco"><circle cx="164.6" cy="197.6" r="14" fill="#d8531f"/><circle cx="164.6" cy="197.6" r="14" fill="none" stroke="#fff" stroke-width="2.5"/><text class="reg-label" x="164.6" y="177.6" text-anchor="middle">Valle de Uco</text></g>
+  <g transform="translate(184.2,124.0)"><circle r="4.5" fill="#12283f"/><text x="8" y="4" font-family="Outfit" font-size="12" font-weight="700" fill="#12283f">Mendoza</text></g>
+  <g transform="translate(293,6)">
+  <rect width="129" height="262" rx="12" fill="#fff" stroke="#e5e3da"/>
+  <g transform="translate(10,8)">
+    <path d="M40.1,0.0 L49.4,1.4 L58.8,0.7 L74.1,14.0 L84.6,20.4 L103.8,25.3 L109.3,30.2 L98.3,37.9 L96.1,38.6 L83.5,37.2 L81.8,57.6 L87.3,61.8 L82.9,83.5 L88.4,87.7 L92.3,101.1 L90.6,112.3 L61.5,131.3 L58.8,133.4 L46.7,132.0 L46.1,140.4 L53.3,143.2 L50.5,146.7 L46.7,149.5 L45.0,157.9 L38.4,161.5 L32.4,168.5 L42.8,175.5 L31.3,191.6 L28.0,198.7 L26.9,212.7 L28.0,216.9 L45.6,230.9 L38.4,232.0 L19.2,223.2 L9.3,210.6 L5.5,203.6 L0.0,195.1 L5.5,188.1 L6.6,168.5 L11.0,161.5 L12.6,146.7 L9.9,140.4 L12.6,127.8 L17.0,112.3 L15.9,98.3 L20.3,87.7 L28.0,70.2 L25.3,51.2 L26.9,35.8 L36.2,14.0 L34.6,6.3 L40.1,0.0 Z" fill="#eef1ed" stroke="#b9c0b4" stroke-width="1"/>
+    <path d="M16.8,99.4 L17.1,98.7 L17.2,98.4 L17.3,97.7 L16.7,97.4 L17.8,96.8 L17.3,96.5 L17.0,96.1 L17.1,95.3 L16.8,94.8 L16.9,94.0 L16.8,93.6 L16.4,93.4 L16.2,93.0 L16.1,92.5 L16.8,92.5 L17.3,92.0 L17.3,91.5 L17.3,90.6 L18.0,89.9 L17.7,89.6 L17.8,89.1 L18.0,88.2 L18.3,87.9 L18.7,87.6 L19.1,87.3 L19.1,86.5 L19.0,85.9 L19.6,86.1 L19.9,86.1 L20.3,85.6 L20.3,85.2 L20.2,84.7 L20.2,84.2 L20.2,83.7 L19.7,83.8 L20.0,83.3 L19.8,82.9 L20.0,82.0 L19.8,81.5 L19.8,80.8 L20.1,80.3 L20.5,79.8 L20.5,79.3 L20.1,78.8 L19.8,78.6 L19.5,78.8 L19.4,79.2 L18.9,79.1 L18.9,78.8 L18.9,78.4 L18.9,78.0 L18.9,77.5 L19.2,77.2 L19.5,76.8 L19.4,76.5 L19.0,76.0 L18.7,75.7 L18.5,75.2 L18.3,74.7 L18.3,74.3 L18.8,74.5 L19.0,74.0 L19.3,73.6 L19.7,74.1 L20.0,74.0 L20.5,73.7 L20.9,73.4 L20.6,72.8 L20.8,72.4 L21.2,72.0 L21.5,71.5 L21.7,71.0 L22.1,70.6 L22.6,70.6 L22.9,71.0 L23.2,70.5 L23.8,70.3 L24.4,70.6 L24.6,70.8 L25.2,70.9 L25.2,72.3 L26.2,72.5 L27.6,71.8 L27.8,71.2 L28.7,70.9 L29.1,71.2 L29.7,70.8 L30.1,70.6 L30.2,71.1 L30.7,71.4 L31.3,71.7 L31.6,71.6 L32.0,71.8 L32.5,71.8 L32.9,71.8 L32.9,72.1 L33.1,72.5 L33.4,72.5 L33.9,72.4 L33.9,72.9 L34.2,73.6 L34.1,73.8 L34.3,74.0 L34.1,74.3 L34.5,74.4 L34.3,74.8 L34.9,75.2 L34.7,76.0 L34.3,76.3 L34.8,78.2 L34.7,78.7 L34.8,80.1 L35.2,80.9 L35.5,81.5 L35.7,81.7 L35.9,82.1 L36.2,82.5 L36.4,82.8 L36.4,83.1 L36.8,83.2 L36.9,83.4 L37.2,83.6 L37.4,83.8 L37.5,84.0 L37.3,84.2 L37.2,84.7 L37.1,85.2 L37.1,85.7 L36.9,85.8 L36.8,86.1 L36.9,86.4 L36.7,86.6 L36.8,86.9 L37.0,87.1 L37.1,87.5 L37.1,87.8 L37.2,88.4 L37.5,88.8 L37.7,89.2 L37.7,89.4 L37.5,89.5 L38.0,89.8 L38.4,90.8 L38.2,91.1 L38.4,91.6 L38.4,91.8 L38.5,92.2 L38.5,92.7 L38.7,93.0 L38.4,93.2 L38.6,93.5 L38.4,93.7 L38.3,94.0 L38.3,94.3 L38.4,94.7 L38.4,94.9 L38.3,95.3 L38.2,95.4 L38.1,95.7 L38.1,96.0 L38.0,96.6 L37.9,97.1 L37.8,97.7 L37.7,98.1 L28.6,98.0 L28.7,100.1 L28.8,109.3 L28.2,109.4 L27.6,109.1 L27.0,108.6 L26.7,108.3 L26.1,107.9 L25.7,107.9 L25.3,108.0 L24.7,108.1 L24.7,107.4 L24.4,106.8 L23.6,106.3 L22.8,106.4 L22.0,106.9 L21.7,106.9 L21.5,106.4 L20.8,105.9 L20.6,105.4 L20.6,104.7 L19.3,103.4 L18.4,102.4 L18.3,101.8 L17.9,100.8 L17.6,100.9 L17.1,101.0 L17.1,99.5 L16.8,99.4 Z" fill="#d8531f" stroke="#fff" stroke-width="0.8"/>
+  </g>
+  <text x="64.5" y="254" text-anchor="middle" font-family="Outfit" font-size="10.5" font-weight="700" fill="#12283f">ARGENTINA</text>
+</g>
+</svg>
+          <div class="map-legend" id="legend">
+            <span><i style="background:#4e9c2e"></i>Luján de Cuyo</span>
+            <span><i style="background:#e0a31f"></i>Maipú</span>
+            <span><i style="background:#d8531f"></i>Valle de Uco</span>
+          </div>
+        </div>
+        <div class="info" id="infoPanel"></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== ALTA MONTAÑA ===== -->
+<section class="sec" id="altamontana" style="background:var(--surface)">
+  <div class="wrap">
+    <div class="split reveal">
+      <div class="video-wrap yt-facade" id="ytAlta" onclick="playYT()" onkeydown="if(event.key==='Enter'||event.key===' '){event.preventDefault();playYT();}" role="button" tabindex="0" aria-label="Reproducir video de Alta Montaña" style="background-image:var(--img6)">
+        <button class="yt-play" aria-hidden="true"><svg width="30" height="30" viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7z"/></svg></button>
+        <span class="yt-label" data-i18n="yt_label">▶ Ver el video</span>
+      </div>
+      <div class="txt">
+        <span class="eyebrow" data-i18n="am_eyebrow">Aventura</span>
+        <h3 data-i18n="am_h3">Circuito de Alta Montaña</h3>
+        <p data-i18n="am_p">Un recorrido inolvidable por la Cordillera de los Andes. Descubrí Potrerillos, Uspallata, Puente del Inca y el imponente Aconcagua mientras recorrés algunos de los paisajes más impactantes de Argentina.</p>
+        <div class="hero-cta" style="margin-top:20px">
+          <button class="btn btn-primary" onclick="reservar('Circuito de Alta Montaña')" data-i18n="am_btn">Reservar excursión</button>
+        </div>
+      </div>
+    </div>
+    <div class="alta-map-layout">
+      <div class="alta-map-stage"><svg id="mapAlta" viewBox="0 0 428 672" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Mapa del circuito de Alta Montaña (Ruta 7)"><path d="M39.1,487.6 L43.1,477.7 L45.1,471.7 L46.1,460.9 L37.0,455.9 L55.1,447.0 L46.1,442.0 L41.1,435.1 L44.1,423.2 L39.1,415.2 L40.1,403.2 L39.1,396.3 L32.0,393.3 L28.0,386.3 L26.0,379.3 L38.0,379.3 L47.1,371.3 L46.1,363.3 L47.1,349.3 L59.1,337.2 L53.1,333.2 L55.1,324.2 L59.1,311.1 L64.2,306.1 L70.2,301.0 L76.2,296.0 L77.2,283.9 L74.2,274.8 L85.2,277.8 L89.3,276.8 L97.3,269.7 L96.3,263.7 L95.3,255.6 L95.3,247.4 L94.3,239.3 L87.2,241.4 L92.3,233.2 L88.2,227.2 L92.3,212.9 L88.2,203.8 L88.2,193.6 L93.3,185.4 L99.3,177.3 L99.3,169.1 L93.3,160.9 L88.2,158.9 L83.2,161.9 L81.2,168.1 L73.2,166.0 L73.2,160.9 L73.2,154.8 L73.2,148.6 L73.2,140.4 L78.2,136.3 L83.2,130.2 L81.2,125.0 L75.2,117.9 L70.2,111.7 L66.2,104.5 L63.1,97.3 L64.2,90.1 L72.2,93.2 L75.2,84.9 L80.2,79.8 L86.2,87.0 L92.3,86.0 L99.3,80.8 L107.3,76.7 L102.3,66.4 L105.3,60.2 L112.3,52.9 L116.4,45.7 L119.4,38.4 L126.4,31.2 L134.4,31.2 L140.5,38.4 L144.5,30.1 L155.5,26.0 L164.6,31.2 L167.6,35.3 L177.6,36.4 L177.6,59.1 L194.7,61.2 L218.8,49.8 L220.8,40.5 L236.8,36.4 L242.9,40.5 L252.9,34.3 L259.9,32.2 L261.9,39.5 L270.0,44.6 L279.0,48.8 L284.0,47.7 L291.1,50.9 L300.1,49.8 L306.1,49.8 L306.1,55.0 L309.1,61.2 L315.2,61.2 L322.2,60.2 L322.7,67.9 L327.2,79.3 L325.7,82.3 L329.2,85.4 L326.7,90.1 L332.7,91.6 L329.2,98.3 L338.8,104.5 L336.2,117.3 L330.2,122.5 L337.7,151.7 L336.7,159.9 L338.2,181.3 L343.8,194.6 L348.8,203.8 L353.3,207.8 L356.3,213.4 L361.3,220.6 L364.9,225.6 L364.4,230.2 L370.9,230.7 L373.4,234.3 L377.9,237.8 L381.9,240.9 L383.4,243.9 L379.9,246.9 L377.9,255.6 L376.9,262.6 L375.9,270.7 L372.4,272.8 L371.9,277.8 L372.9,282.4 L369.4,285.4 L370.4,289.4 L374.4,292.4 L376.4,299.0 L375.4,304.5 L378.4,313.6 L382.9,320.1 L385.4,326.7 L386.9,330.2 L382.4,331.2 L391.5,335.7 L397.5,352.3 L395.0,356.8 L397.0,363.8 L398.0,367.8 L400.0,374.3 L400.0,381.3 L402.0,386.3 L397.5,390.3 L401.5,393.8 L397.0,397.3 L395.5,402.7 L395.5,407.7 L398.5,413.2 L398.0,417.2 L396.0,423.2 L394.0,425.1 L393.5,428.6 L393.0,433.6 L391.5,443.0 L389.5,451.4 L387.9,460.4 L386.4,467.8 L234.8,465.8 L235.8,499.4 L238.9,645.0 L228.8,646.0 L217.8,641.2 L208.7,633.4 L203.7,629.5 L193.7,622.7 L185.6,622.7 L179.6,624.7 L169.6,626.6 L170.6,614.9 L165.6,605.2 L151.5,597.4 L138.4,599.4 L125.4,607.2 L119.4,606.2 L116.4,599.4 L104.3,590.6 L101.3,583.8 L101.3,572.0 L80.2,551.5 L65.2,535.8 L63.1,526.0 L57.1,510.2 L51.1,512.2 L44.1,514.2 L43.1,489.5 L39.1,487.6 Z" fill="#eef2ee" stroke="#b9c0b4" stroke-width="1.4" stroke-linejoin="round"/><text x="32" y="336" fill="#9aa294" font-family="Outfit" font-size="12" transform="rotate(-90 32 336)" letter-spacing="3">CORDILLERA DE LOS ANDES</text><path id="routeAlta" d="M184.2,124.0 L151.8,131.9 L138.1,90.8 L118.9,116.4 L86.9,117.5 L80.5,97.4" fill="none" stroke="var(--terra)" stroke-width="2.6" stroke-dasharray="7 5" stroke-linecap="round"/><g class="astop" data-stop="mendoza" tabindex="0" role="button" style="cursor:pointer" onclick="altStop('mendoza')" onkeydown="if(event.key==='Enter')altStop('mendoza')"><circle cx="184.2" cy="124.0" r="7" fill="var(--terra)" stroke="#fff" stroke-width="2"/><text x="184.2" y="113.0" text-anchor="middle">Cdad. Mendoza</text></g><g class="astop" data-stop="potrerillos" tabindex="0" role="button" style="cursor:pointer" onclick="altStop('potrerillos')" onkeydown="if(event.key==='Enter')altStop('potrerillos')"><circle cx="151.8" cy="131.9" r="7" fill="var(--terra)" stroke="#fff" stroke-width="2"/><text x="151.8" y="120.9" text-anchor="middle">Potrerillos</text></g><g class="astop" data-stop="uspallata" tabindex="0" role="button" style="cursor:pointer" onclick="altStop('uspallata')" onkeydown="if(event.key==='Enter')altStop('uspallata')"><circle cx="138.1" cy="90.8" r="7" fill="var(--terra)" stroke="#fff" stroke-width="2"/><text x="138.1" y="79.8" text-anchor="middle">Uspallata</text></g><g class="astop" data-stop="penitentes" tabindex="0" role="button" style="cursor:pointer" onclick="altStop('penitentes')" onkeydown="if(event.key==='Enter')altStop('penitentes')"><circle cx="118.9" cy="116.4" r="7" fill="var(--terra)" stroke="#fff" stroke-width="2"/><text x="118.9" y="105.4" text-anchor="middle">Penitentes</text></g><g class="astop" data-stop="puente" tabindex="0" role="button" style="cursor:pointer" onclick="altStop('puente')" onkeydown="if(event.key==='Enter')altStop('puente')"><circle cx="86.9" cy="117.5" r="7" fill="var(--terra)" stroke="#fff" stroke-width="2"/><text x="86.9" y="106.5" text-anchor="middle">Puente del Inca</text></g><g class="astop" data-stop="aconcagua" tabindex="0" role="button" style="cursor:pointer" onclick="altStop('aconcagua')" onkeydown="if(event.key==='Enter')altStop('aconcagua')"><circle cx="80.5" cy="97.4" r="7" fill="var(--terra)" stroke="#fff" stroke-width="2"/><text x="80.5" y="86.4" text-anchor="middle">Aconcagua</text></g><g transform="translate(184.2,124.0)"><circle r="4.5" fill="#12283f"/><text x="8" y="4" font-family="Outfit" font-size="12" font-weight="700" fill="#12283f">Mendoza</text></g></svg></div>
+      <div class="alta-info" id="altInfo">
+        <div class="tag">Alta montaña · Ruta 7</div>
+        <h3>El recorrido</h3>
+        <p>Seguimos la Ruta 7 por la Cordillera de los Andes. Tocá un punto del mapa (Potrerillos, Uspallata, Puente del Inca, Aconcagua…) para ver el detalle de cada parada.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== OTRAS EXPERIENCIAS ===== -->
+<section class="sec" id="aventura" style="background:var(--beige)">
+  <div class="wrap">
+    <div class="sec-head reveal">
+      <span class="eyebrow" data-i18n="av_eyebrow">Más aventuras</span>
+      <h2 data-i18n="av_h2">Mendoza también es montaña, río y caballos</h2>
+    </div>
+
+    <div class="split reveal" style="margin-bottom:48px">
+      <div class="txt">
+        <span class="chip" data-i18n="ll_chip">Nieve & montaña</span>
+        <h3 style="margin-top:10px" data-i18n="ll_h3">Las Leñas</h3>
+        <p data-i18n="ll_p">Viví una jornada en uno de los centros de esquí más importantes de Sudamérica. Montañas nevadas, paisajes únicos y actividades para toda la familia durante todo el año.</p>
+        <button class="btn btn-ghost" style="margin-top:16px" onclick="reservar('Excursión Las Leñas')" data-i18n="btn_consultar">Consultar</button>
+      </div>
+      <div class="video-wrap" style="aspect-ratio:4/3"><div style="position:absolute;inset:0;background-image:var(--img7);background-size:cover;background-position:center"></div></div>
+    </div>
+
+    <div class="split reveal" style="margin-bottom:48px">
+      <div class="video-wrap" style="aspect-ratio:4/3"><div style="position:absolute;inset:0;background-image:var(--img8);background-size:cover;background-position:center"></div></div>
+      <div class="txt">
+        <span class="chip" data-i18n="rf_chip">Adrenalina</span>
+        <h3 style="margin-top:10px" data-i18n="rf_h3">Rafting</h3>
+        <p data-i18n="rf_p">Sentí la adrenalina descendiendo por los rápidos del Río Mendoza acompañado por guías especializados y rodeado de escenarios naturales increíbles.</p>
+        <button class="btn btn-ghost" style="margin-top:16px" onclick="reservar('Rafting Río Mendoza')" data-i18n="btn_consultar">Consultar</button>
+      </div>
+    </div>
+
+    <div class="itin-card reveal" style="margin-bottom:48px">
+      <span class="eyebrow" data-i18n="cab_eyebrow">A caballo</span>
+      <h3 style="font-size:28px;margin:10px 0 4px" data-i18n="cab_h3">Cabalgatas</h3>
+      <p style="color:var(--ink-soft);margin:0" data-i18n="cab_p">Elegí la zona donde querés cabalgar y te mostramos las opciones disponibles.</p>
+      <div class="zonesel" id="cabZonas">
+        <button class="active" data-z="Maipú">Maipú</button>
+        <button data-z="Luján de Cuyo">Luján de Cuyo</button>
+        <button data-z="Valle de Uco">Valle de Uco</button>
+        <button data-z="Potrerillos">Potrerillos</button>
+      </div>
+      <div class="zone-out" id="cabOut"></div>
+    </div>
+
+    <div class="split reveal">
+      <div class="txt">
+        <span class="chip" data-i18n="bk_chip">Activo & divertido</span>
+        <h3 style="margin-top:10px" data-i18n="bk_h3">Bike Tour</h3>
+        <p data-i18n="bk_p">Recorré viñedos, olivares y caminos rurales en bicicleta mientras descubrís la esencia de Mendoza de una manera activa y divertida.</p>
+        <button class="btn btn-ghost" style="margin-top:16px" onclick="reservar('Bike Tour')" data-i18n="btn_consultar">Consultar</button>
+      </div>
+      <div class="video-wrap" style="aspect-ratio:4/3"><div style="position:absolute;inset:0;background-image:var(--img1);background-size:cover;background-position:center"></div></div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== SAN RAFAEL ===== -->
+<section class="sec" id="sanrafael" style="background:var(--surface)">
+  <div class="wrap">
+    <div class="split reveal">
+      <div class="video-wrap" style="aspect-ratio:4/3"><div style="position:absolute;inset:0;background-image:var(--img10);background-size:cover;background-position:center"></div></div>
+      <div class="txt">
+        <span class="eyebrow" data-i18n="sr_eyebrow">Sur mendocino</span>
+        <h3 data-i18n="sr_h3">San Rafael & Cañón del Atuel</h3>
+        <p data-i18n="sr_p">Descubrí el oasis más emblemático del sur mendocino. Atravesaremos paisajes agrícolas y viñedos hasta la histórica Villa 25 de Mayo, seguiremos por la Cuesta de los Terneros rumbo al Dique El Nihuil, y recorreremos el espectacular Cañón del Atuel. Más tarde, Valle Grande y sus actividades de aventura antes de cerrar el día por la ciudad de San Rafael.</p>
+        <button class="btn btn-primary" style="margin-top:18px" onclick="reservar('Tour San Rafael')" data-i18n="sr_btn">Reservar tour</button>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== COMBOS ===== -->
+<section class="sec" id="combos" style="background:var(--beige)">
+  <div class="wrap">
+    <div class="sec-head reveal">
+      <span class="eyebrow" data-i18n="co_eyebrow">Compra rápida</span>
+      <h2 data-i18n="co_h2">Combos de bodegas</h2>
+      <p data-i18n="co_p">Paquetes armados para reservar en un clic, con precio cerrado.</p>
+    </div>
+    <div class="combo-grid reveal">
+      <div class="combo">
+        <div class="ph" style="background-image:var(--img3)"></div>
+        <div class="cbody">
+          <span class="ribbon">Valle de Uco</span>
+          <h4 data-i18n="cb1_t">Combo Valle de Uco</h4>
+          <p class="pair" data-i18n="cb1_p">Alfa Crux + La Azul · degustación y almuerzo entre viñedos de altura.</p>
+          <div class="price">USD 165 <small data-i18n="per_person">/ persona</small></div>
+          <button class="btn btn-primary" onclick="reservar('Combo Valle de Uco — Alfa Crux + La Azul')" data-i18n="btn_reservar">Reservar</button>
+        </div>
+      </div>
+      <div class="combo">
+        <div class="ph" style="background-image:var(--img1)"></div>
+        <div class="cbody">
+          <span class="ribbon">Premium</span>
+          <h4 data-i18n="cb2_t">Combo Premium</h4>
+          <p class="pair" data-i18n="cb2_p">Catena Zapata + Angélica Zapata · la experiencia íconal de Luján de Cuyo.</p>
+          <div class="price">USD 240 <small data-i18n="per_person">/ persona</small></div>
+          <button class="btn btn-primary" onclick="reservar('Combo Premium — Catena Zapata + Angélica Zapata')" data-i18n="btn_reservar">Reservar</button>
+        </div>
+      </div>
+      <div class="combo">
+        <div class="ph" style="background-image:var(--img2)"></div>
+        <div class="cbody">
+          <span class="ribbon">Maipú</span>
+          <h4 data-i18n="cb3_t">Combo Maipú</h4>
+          <p class="pair" data-i18n="cb3_p">Laur + Casa Vigil · aceite de oliva, vino y cocina con vista a los viñedos.</p>
+          <div class="price">USD 130 <small data-i18n="per_person">/ persona</small></div>
+          <button class="btn btn-primary" onclick="reservar('Combo Maipú — Laur + Casa Vigil')" data-i18n="btn_reservar">Reservar</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== FAQ ===== -->
+<section class="sec" id="faq">
+  <div class="wrap">
+    <div class="sec-head center reveal">
+      <span class="eyebrow" data-i18n="faq_eyebrow">Preguntas frecuentes</span>
+      <h2 data-i18n="faq_h2">Todo lo que querés saber</h2>
+    </div>
+    <div class="faq-list reveal">
+      <details class="faq-item"><summary data-i18n="faq_q1">¿Cómo hago para reservar con Sineus?</summary><div class="faq-a"><p data-i18n="faq_a1">Escribinos por WhatsApp o completá el formulario de contacto con tus fechas, cantidad de personas y qué te gustaría hacer. Te armamos una propuesta a medida y coordinamos la reserva.</p></div></details>
+      <details class="faq-item"><summary data-i18n="faq_q2">¿En qué idioma atienden?</summary><div class="faq-a"><p data-i18n="faq_a2">Atendemos en español, portugués e inglés.</p></div></details>
+      <details class="faq-item"><summary data-i18n="faq_q3">¿Trabajan con agencias de viajes y empresas?</summary><div class="faq-a"><p data-i18n="faq_a3">Sí. Trabajamos con agencias y empresas, con servicios y tarifas especiales para grupos y viajes corporativos.</p></div></details>
+      <details class="faq-item"><summary data-i18n="faq_q4">¿Qué formas de pago reciben?</summary><div class="faq-a"><p data-i18n="faq_a4">Coordinamos el pago según el servicio: transferencia, efectivo y medios electrónicos. Consultanos las opciones disponibles al momento de reservar.</p></div></details>
+    </div>
+  </div>
+</section>
+
+<!-- ===== NOVEDADES / BLOG ===== -->
+<section class="sec" id="novedades" style="background:var(--surface)">
+  <div class="wrap">
+    <div class="sec-head reveal">
+      <span class="eyebrow" data-i18n="n_eyebrow">Novedades</span>
+      <h2 data-i18n="n_h2">Historias, vinos y montaña</h2>
+      <p data-i18n="n_p">Inspiración y consejos para tu próximo viaje a Mendoza.</p>
+    </div>
+    <div class="blog-cats reveal" id="blogCats"></div>
+    <div class="blog-grid reveal" id="blogGrid"></div>
+  </div>
+</section>
+
+<!-- ===== ITINERARIO ===== -->
+<section class="sec itin" id="itinerario">
+  <div class="wrap">
+    <div class="sec-head reveal">
+      <span class="eyebrow" data-i18n="it_eyebrow">A medida</span>
+      <h2 data-i18n="it_h2">Armá tu itinerario ideal</h2>
+      <p data-i18n="it_p">Elegí tus fechas y armá tu viaje día por día. Al terminar te lo enviamos por WhatsApp y lo cerramos juntos.</p>
+    </div>
+    <div class="itin-card reveal">
+      <div class="itin-form">
+        <div class="field"><label data-i18n="it_in">Fecha de llegada</label><input type="date" id="itinIn" onchange="buildDays()"></div>
+        <div class="field"><label data-i18n="it_out">Fecha de salida</label><input type="date" id="itinOut" onchange="buildDays()"></div>
+        <div class="field"><label data-i18n="it_pax">Cantidad de pasajeros</label><input type="number" id="itinPax" min="1" value="2"></div>
+      </div>
+      <div class="days" id="itinDays"><p data-i18n="it_empty" style="color:var(--ink-soft);font-size:14.5px;margin:8px 0">Elegí las fechas para armar tu cronograma día por día.</p></div>
+      <div class="itin-summary" id="itinSummary" data-i18n="it_sum">Tu itinerario aparecerá acá a medida que lo armes.</div>
+      <div style="margin-top:18px">
+        <button class="btn btn-primary" onclick="sendItinerary()" data-i18n="it_send">📲 Enviar itinerario por WhatsApp</button>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== TIENDA ===== -->
+<section class="sec shop" id="tienda">
+  <div class="wrap">
+    <div class="sec-head reveal">
+      <span class="eyebrow" data-i18n="sh_eyebrow">Tienda online</span>
+      <h2 data-i18n="sh_h2">Llevate Mendoza a casa</h2>
+      <p data-i18n="sh_p">Vinos, productos de cuero y souvenirs mendocinos. Sumá al carrito y pagá con Mercado Pago, transferencia o cerrá por WhatsApp.</p>
+    </div>
+    <div class="reveal">
+      <div class="shop-bar">
+        <div class="shop-tabs" id="shopTabs"></div>
+        <div class="search"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="7"/><path d="m21 21-4.3-4.3"/></svg><input id="shopSearch" data-i18n-ph="sh_search" placeholder="Buscar producto..." data-i18n-ph="ph_search" oninput="renderProducts()"></div>
+      </div>
+      <div class="grid" id="productGrid"></div>
+      <div class="sec-head" style="margin:46px 0 18px"><h2 style="font-size:28px" data-i18n="sh_packs">Packs promocionales</h2></div>
+      <div class="packs" id="packs"></div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== CONTACTO ===== -->
+<section class="sec contact" id="contacto">
+  <div class="wrap">
+    <div class="sec-head reveal">
+      <span class="eyebrow" data-i18n="ct_eyebrow">Contacto</span>
+      <h2 data-i18n="ct_h2">Contanos qué querés cotizar</h2>
+      <p data-i18n="ct_p">Paseos, bodegas, traslados, experiencias o viajes personalizados. Te respondemos a la brevedad.</p>
+    </div>
+    <div class="contact-grid reveal">
+      <div class="form-card">
+        <div class="form-row">
+          <div class="field"><label data-i18n="ct_nombre">Nombre</label><input id="cNombre" data-i18n-ph="ph_nombre" placeholder="Tu nombre" data-i18n-ph="ph_nombre"></div>
+          <div class="field"><label data-i18n="ct_apellido">Apellido</label><input id="cApellido" data-i18n-ph="ph_apellido" placeholder="Tu apellido" data-i18n-ph="ph_apellido"></div>
+        </div>
+        <div class="form-row">
+          <div class="field"><label data-i18n="ct_tel">Teléfono</label><input id="cTel" placeholder="+54 9 ..." data-i18n-ph="ph_tel"></div>
+          <div class="field"><label data-i18n="ct_email">Email</label><input id="cEmail" type="email" data-i18n-ph="ph_email" placeholder="tucorreo@email.com" data-i18n-ph="ph_email"></div>
+        </div>
+        <div class="field" style="margin-bottom:14px"><label data-i18n="ct_tipo">¿Qué querés cotizar?</label>
+          <select id="cTipo"><option data-i18n="opt_paseos">Paseos</option><option data-i18n="opt_bodegas">Bodegas</option><option data-i18n="opt_traslados">Traslados</option><option data-i18n="opt_experiencias">Experiencias</option><option data-i18n="opt_personalizados">Viajes personalizados</option></select>
+        </div>
+        <div class="field" style="margin-bottom:16px"><label data-i18n="ct_msg">Contanos qué querés cotizar</label><textarea id="cMsg" rows="4" data-i18n-ph="ph_msg" placeholder="Fechas, cantidad de personas, qué te gustaría hacer..." data-i18n-ph="ph_msg"></textarea></div>
+        <button class="btn btn-primary" onclick="sendContact()" data-i18n="ct_send">Enviar consulta</button>
+      </div>
+      <div class="contact-side">
+        <div class="cside-item"><div class="ic"><svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2a10 10 0 0 0-8.6 15l-1.4 5 5.1-1.3A10 10 0 1 0 12 2zm5.3 14.2c-.2.6-1.3 1.2-1.8 1.2-.5.1-1 .2-3.3-.7-2.8-1.1-4.5-3.9-4.7-4.1-.1-.2-1.1-1.4-1.1-2.7s.7-1.9.9-2.2c.2-.2.5-.3.7-.3h.5c.2 0 .4 0 .6.5l.8 2c.1.2.1.4 0 .5l-.4.5c-.1.2-.3.3-.1.6.1.3.7 1.1 1.5 1.8 1 .9 1.8 1.1 2 1.2.3.1.4.1.6-.1l.7-.8c.2-.3.4-.2.6-.1l1.9.9c.2.1.4.2.5.3.1.3.1.7-.1 1z"/></svg></div><div><b data-i18n="ct_wa">WhatsApp</b><br><a href="https://api.whatsapp.com/send?phone=5492615451540">+54 261 5451540</a></div></div>
+        <div class="cside-item"><div class="ic"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="m3 7 9 6 9-6"/></svg></div><div><b data-i18n="ct_emailb">Email</b><br><a href="mailto:turismosineus@gmail.com">turismosineus@gmail.com</a></div></div>
+        <div class="cside-item"><div class="ic"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 6-9 12-9 12s-9-6-9-12a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg></div><div><b data-i18n="ct_office">Oficina</b><br><span>Sarmiento 632, piso 7 · Ciudad de Mendoza</span></div></div>
+        <div class="mapembed"><iframe loading="lazy" src="https://www.google.com/maps?q=Sarmiento%20632%20Mendoza%20Argentina&output=embed" title="Ubicación Sineus Tour"></iframe></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== FOOTER ===== -->
+<footer id="footer">
+  <div class="wrap">
+    <div class="foot-grid">
+      <div>
+        <a href="#inicio" class="brand"><img src="assets/logo.png" alt="Sineus Tours"></a>
+        <p style="margin-top:14px" data-i18n="ft_about">Empresa familiar de turismo desde 2016. Diseñamos experiencias personalizadas en Mendoza, de la vid a la cumbre.</p>
+        <span class="proto-badge" data-i18n="ft_proto">Prototipo de demostración</span>
+      </div>
+      <div>
+        <h4 data-i18n="ft_explore">Explorar</h4>
+        <a href="#experiencias" onclick="showView('experiencias');return false;">Experiencias</a><br><a href="#servicios" onclick="showView('home','servicios');return false;">Servicios</a><br><a href="#faq" onclick="showView('faq');return false;">Preguntas frecuentes</a><br><a href="#itinerario" onclick="showView('itinerario');return false;">Armá tu viaje</a><br><a href="#tienda" onclick="showView('tienda');return false;">Tienda</a>
+      </div>
+      <div>
+        <h4 data-i18n="ft_contact">Contacto</h4>
+        <a href="https://api.whatsapp.com/send?phone=5492615451540">+54 261 5451540</a><br><a href="mailto:turismosineus@gmail.com">turismosineus@gmail.com</a><br><span>Sarmiento 632, piso 7</span><br><span>Ciudad de Mendoza</span>
+      </div>
+      <div>
+        <h4 data-i18n="ft_news">Newsletter</h4>
+        <p data-i18n="ft_news_p">Recibí ofertas y novedades de Mendoza.</p>
+        <div class="news"><input id="newsEmail" data-i18n-ph="ft_news_ph" placeholder="Tu email" data-i18n-ph="ph_news"><button onclick="subscribe()" data-i18n="ft_news_btn">Suscribirme</button></div>
+      </div>
+    </div>
+    <div class="foot-bottom">
+      <span>© 2026 Sineus Tour · E.V.T. Leg. 17079 · Todos los derechos reservados.</span>
+      <span>Prototipo interactivo — contenido de ejemplo, editable.</span>
+    </div>
+  </div>
+</footer>
+
+<!-- ===== FLOATING WHATSAPP ===== -->
+<a class="wa-float" href="https://api.whatsapp.com/send?phone=5492615451540" target="_blank" rel="noopener" aria-label="WhatsApp">
+  <svg width="28" height="28" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2a10 10 0 0 0-8.6 15l-1.4 5 5.1-1.3A10 10 0 1 0 12 2zm5.3 14.2c-.2.6-1.3 1.2-1.8 1.2-.5.1-1 .2-3.3-.7-2.8-1.1-4.5-3.9-4.7-4.1-.1-.2-1.1-1.4-1.1-2.7s.7-1.9.9-2.2c.2-.2.5-.3.7-.3h.5c.2 0 .4 0 .6.5l.8 2c.1.2.1.4 0 .5l-.4.5c-.1.2-.3.3-.1.6.1.3.7 1.1 1.5 1.8 1 .9 1.8 1.1 2 1.2.3.1.4.1.6-.1l.7-.8c.2-.3.4-.2.6-.1l1.9.9c.2.1.4.2.5.3.1.3.1.7-.1 1z"/></svg>
+</a>
+
+<!-- ===== VIDEO MODAL ===== -->
+<div class="vmodal" id="vmodal" onclick="closeVideo(event)">
+  <div class="vmodal-inner">
+    <button class="vclose" onclick="closeVideo()" aria-label="Cerrar">×</button>
+    <video id="bemVideo" controls playsinline preload="none" poster="assets/video-poster.jpg"><source src="assets/bienvenida.mp4" type="video/mp4"></video>
+  </div>
+</div>
+
+<!-- ===== CART DRAWER ===== -->
+<div class="scrim" id="scrim" onclick="closeAll()"></div>
+<aside class="drawer" id="cart" aria-label="Carrito">
+  <div class="drawer-head"><h3 data-i18n="cart_t">Tu carrito</h3><button class="x" onclick="closeAll()">×</button></div>
+  <div class="drawer-items" id="cartItems"></div>
+  <div class="drawer-foot">
+    <div class="coupon"><input id="couponInput" data-i18n-ph="cart_coupon" placeholder="Cupón (probá MENDOZA10)" data-i18n-ph="ph_coupon"><button onclick="applyCoupon()">Aplicar</button></div>
+    <div class="totline" id="subLine"><span data-i18n="cart_sub">Subtotal</span><span>USD 0</span></div>
+    <div class="totline" id="discLine" style="display:none;color:var(--olive)"><span data-i18n="cart_disc">Descuento</span><span>-USD 0</span></div>
+    <div class="totline big"><span data-i18n="cart_total">Total</span><b id="cartTotal">USD 0</b></div>
+    <div class="cart-suggest" id="cartSuggest"></div>
+    <div class="pay-opts">
+      <button class="btn-block co-finish" onclick="openCheckout()" data-i18n="cart_finish">Finalizar compra</button>
+      <button class="co-wa-link" onclick="checkoutWA()" data-i18n="cart_wa">o finalizar por WhatsApp</button>
+    </div>
+    <p class="foot-note" data-i18n="cart_note">Prototipo: Mercado Pago y transferencia son demostrativos. WhatsApp arma el pedido real al +54 261 5451540.</p>
+  </div>
+</aside>
+
+<!-- ===== WISHLIST DRAWER ===== -->
+<aside class="drawer" id="wish" aria-label="Favoritos">
+  <div class="drawer-head"><h3 data-i18n="wish_t">Tus favoritos</h3><button class="x" onclick="closeAll()">×</button></div>
+  <div class="drawer-items" id="wishItems"></div>
+</aside>
+
+<div class="toast" id="toast"></div>
+
+<div id="expPage" class="exp-page" aria-hidden="true"></div>
+
+<!-- ===== CHECKOUT (KamiPay) ===== -->
+<div class="checkout" id="checkout" aria-hidden="true">
+  <div class="co-inner">
+    <button class="co-x" onclick="closeCheckout()" aria-label="Cerrar">&times;</button>
+    <div class="co-grid">
+      <div class="co-form">
+        <div class="co-brand">SINEUS TOURS</div>
+        <h3>Contacto</h3>
+        <input type="email" placeholder="Email">
+        <h3>Datos y entrega</h3>
+        <div class="co-row"><input placeholder="Nombre"><input placeholder="Apellido"></div>
+        <input placeholder="Teléfono / WhatsApp">
+        <div class="co-row"><select><option>Argentina</option><option>Brasil</option><option>Chile</option><option>Uruguay</option><option>Otro</option></select><input placeholder="Ciudad"></div>
+        <input placeholder="Dirección (para envíos de productos)">
+        <h3>Método de pago</h3>
+        <div class="co-pay-tabs">
+          <button data-pay="tarjeta" class="on" onclick="setPay('tarjeta')">Tarjeta</button>
+          <button data-pay="pix" onclick="setPay('pix')">PIX</button>
+        </div>
+        <div class="co-pay-body" id="coPayBody"></div>
+        <button class="co-pay-btn" onclick="payKami()">Pagar <span id="coPayAmt">USD 0</span> con KamiPay</button>
+        <p class="co-secure">&#128274; Pago procesado de forma segura por <b>KamiPay</b> · Tarjeta y PIX</p>
+      </div>
+      <div class="co-summary">
+        <h3 style="margin-top:0">Tu pedido</h3>
+        <div id="coItems"></div>
+        <div class="co-totline"><span>Subtotal</span><span id="coSub">USD 0</span></div>
+        <div class="co-totline" id="coDiscLine" style="display:none;color:var(--olive)"><span>Descuento</span><span id="coDisc">-USD 0</span></div>
+        <div class="co-totline big"><span>Total</span><b id="coTotal">USD 0</b></div>
+        <div class="co-suggest" id="coSuggest"></div>
+      </div>
+    </div>
+  </div>
+</div>
+<script src="app.js"></script>
+</body>
+</html>

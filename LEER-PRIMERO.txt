@@ -1,0 +1,26 @@
+SINEUS TOUR — Sitio web (versión dividida)
+==========================================
+
+Contenido de esta carpeta:
+  - index.html      -> la página principal
+  - styles.css      -> todos los estilos
+  - app.js          -> toda la programación (interactividad)
+  - assets/         -> imágenes, logo y video
+
+CÓMO VERLO EN TU COMPUTADORA
+  Abrí "index.html" con doble clic (se abre en el navegador).
+
+CÓMO SUBIRLO A GITHUB + PUBLICARLO GRATIS (GitHub Pages)
+  1. Entrá a tu repositorio en GitHub.
+  2. "Add file" -> "Upload files".
+  3. Arrastrá TODO: index.html, styles.css, app.js y la carpeta assets.
+     (Importante: subí también la carpeta "assets" completa.)
+  4. "Commit changes".
+  5. Settings -> Pages -> Source: rama "main", carpeta "/(root)" -> Save.
+  6. Esperá 1-2 minutos. Tu sitio queda en:
+     https://TUUSUARIO.github.io/NOMBRE-DEL-REPO/
+  * El repositorio debe ser PÚBLICO para que Pages lo publique gratis.
+
+NOTA: el pago con KamiPay es un demo (se conecta de verdad en la etapa
+de WordPress). Todo lo demás -diseño, navegación, mapa, tienda, idiomas-
+funciona online.
