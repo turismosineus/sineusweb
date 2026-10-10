@@ -516,13 +516,13 @@ html,body{overflow-x:hidden;max-width:100%}
 .hero{position:relative;min-height:100svh;min-height:100vh;display:flex;align-items:center;justify-content:center;padding:0;margin-top:calc(-1*var(--navh));overflow:hidden;background:#0b1a2b}
 .hero-video{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;z-index:0;transform:scale(1.08);animation:heroZoom 22s ease-out forwards}
 @keyframes heroZoom{to{transform:scale(1)}}
-.hero-scrim{position:absolute;inset:0;z-index:1;background:linear-gradient(180deg,rgba(10,22,38,.55),rgba(10,22,38,.18) 38%,rgba(10,22,38,.42) 72%,rgba(10,22,38,.82))}
+.hero-scrim{position:absolute;inset:0;z-index:1;background:radial-gradient(ellipse 88% 66% at 50% 45%,rgba(7,16,28,.62),rgba(7,16,28,0) 66%),linear-gradient(180deg,rgba(7,16,28,.52),rgba(7,16,28,.34) 40%,rgba(7,16,28,.5) 72%,rgba(7,16,28,.9))}
 .hero-inner{position:relative;z-index:2;width:100%;padding-top:var(--navh);display:flex;justify-content:center}
 .hero .hero-copy{max-width:800px;margin:0;text-align:center;color:#fff}
-.hero .eyebrow{color:#fce4bd;justify-content:center}
-.hero h1{color:#fff;font-size:clamp(46px,8vw,98px);letter-spacing:-.02em;margin-top:0;text-shadow:0 2px 42px rgba(0,0,0,.42)}
-.hero h1 .sub{color:#eff4ec;font-weight:500;font-style:italic;text-shadow:0 1px 18px rgba(0,0,0,.5)}
-.hero .hero-tag{color:#eef3ea;font-size:clamp(16px,2.1vw,22px);margin-top:14px;text-shadow:0 1px 20px rgba(0,0,0,.5)}
+.hero .eyebrow{color:#ffe7bf;justify-content:center;text-shadow:0 1px 12px rgba(0,0,0,.8)}
+.hero h1{color:#fff;font-size:clamp(46px,8vw,98px);letter-spacing:-.02em;margin-top:0;text-shadow:0 2px 30px rgba(0,0,0,.72),0 1px 4px rgba(0,0,0,.5)}
+.hero h1 .sub{color:#f4f8f1;font-weight:500;font-style:italic;text-shadow:0 1px 14px rgba(0,0,0,.85),0 1px 3px rgba(0,0,0,.55)}
+.hero .hero-tag{color:#f3f7f0;font-size:clamp(16px,2.1vw,22px);margin-top:14px;text-shadow:0 1px 16px rgba(0,0,0,.82),0 1px 3px rgba(0,0,0,.5)}
 .hero .hero-cta{align-items:center;margin-top:34px}
 .hero .hero-cta-row{justify-content:center}
 .hero .btn-ghost{color:#fff;border:1.5px solid rgba(255,255,255,.72);background:rgba(255,255,255,.1);backdrop-filter:blur(6px)}
