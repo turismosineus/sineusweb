@@ -1,0 +1,30 @@
+# ===== Sineus Tour — Redirecciones 301 (Cloudflare Pages) =====
+# Formato:   /ruta-vieja    /ruta-nueva    301
+# Sólo va lo que viene DESPUÉS de agenciasineus.com
+# (ej: la URL vieja https://agenciasineus.com/traslados  ->  /traslados)
+#
+# -------------------------------------------------------------------
+# 1) URLs VIEJAS QUE GOOGLE ADS RECHAZÓ  (COMPLETAR con las reales)
+# -------------------------------------------------------------------
+# Emilia: reemplazá la ruta de la izquierda por la URL vieja EXACTA.
+# A la derecha ya dejé la página nueva equivalente. Descomentá (sacá el #) cuando estén bien.
+#
+# /traslados          /pt/transfer        301
+# /tours-bodega       /pt/vinicolas       301
+# /tour-bodegas       /pt/vinicolas       301
+#
+# -------------------------------------------------------------------
+# 2) OTRAS URLs VIEJAS DEL WORDPRESS  (agregá las que me pases)
+# -------------------------------------------------------------------
+# Ejemplos típicos de WordPress (ajustar a las reales):
+# /nosotros           /pt/quem-somos      301
+# /contacto           /pt/contato         301
+# /tienda             /                   301
+# /blog               /                   301
+#
+# -------------------------------------------------------------------
+# 3) Regla de seguridad: cualquier URL vieja no listada va al inicio
+#    (evita 404). Dejala comentada hasta tener el mapa completo, porque
+#    atrapa TODO lo que no exista.
+# -------------------------------------------------------------------
+# /*    /    301
